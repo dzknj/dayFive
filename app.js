@@ -4,6 +4,10 @@ var res3 = document.getElementById('resultThree');
 var res4 = document.getElementById('resultFour');
 var res5 = document.getElementById('resultFive');
 var res6 = document.getElementById('resultSix');
+// var quesData = [[first ques stuff],[ second ques stuff]];
+// var quesData = [[ques, ans1, ans2, right-mess, wrong-mess],[ second ques stuff]];
+
+
 var userName = prompt('What is your name my friend?');
 
 function user() {
@@ -17,9 +21,54 @@ user();
 var answersRight = 0;
 var answersWrong = 0;
 
+var quesData = [['Did I grow up in Alaska?',
+                'N',
+                'NO',
+                'n',
+                'no',
+                'At least you know that much ' + userName + '! I grew up in Washington.',
+                'You suck! I grew up in Washington.',
+                demo1],
+                [userName + ', Do I like nature and being outside?',
+                'Y',
+                'y',
+                'YES',
+                'yes',
+                'You are in the friend zone ' + userName + '!',
+                'So you actually don\'t know me... I love getting out there!',
+                demo2],
+                [userName + ', Am I a tech geek?',
+                'Y',
+                'y',
+                'YES',
+                'yes',
+                'Did we just become best friends, ' + userName + '?!' ,
+                'I never want to see you again, ' + userName + '. Technology is my middle name.',
+                demo3]]
+
+function questions(){
+  console.log(i);
+  var ans1 = prompt(quesData[i][0]);
+  if (ans1 === quesData[i][1] || ans1 === quesData[i][2] || ans1 === quesData[i][3] || ans1 === quesData[i][4]){
+    //correct
+    quesData[i][7].textContent = quesData[i][5];
+    quesData[i][7].className = 'right';
+     document.getElementById("pic" + i).innerHTML= '<img src="calvin2.jpeg" />'
+  } else if (ans1 !== [i][1] || ans1 !== [i][2] || ans1 !== [i][3] || ans1 !== [i][4]){
+     quesData[i][7].textContent = quesData[i][6];
+     quesData[i][7].className = 'wrong'
+     document.getElementById("pic" + i).innerHTML= '<img src="calvin.jpeg" />'
+  } else {
+    alert('Please give a yes or no answer.');
+  }
+}
+for (var i = 0; i < quesData.length; i++){
+  questions();
+}
+/*
 function qOne() {
   var answer1 = prompt(userName + ', Did I grow up in Alaska?');
-    if (answer1 === 'N' ||answer1 === 'NO' ||answer1 === 'n' ||answer1 === 'no' ||answer1 === 'No'){
+    if (answer1 === 'N' ||answer1 === 'NO' || answer1 === 'n' || answer1 === 'no' ||answer1 === 'No'){
     answersRight ++;
     //alert('At least you know that much ' + userName + '! I grew up in Washington. You\'ve got ' + answersRight + ' right so far and ' + answersWrong + ' wrong.');
     res2.textContent = 'At least you know that much ' + userName + '! I grew up in Washington. You\'ve got ' + answersRight + ' right so far and ' + answersWrong + ' wrong.';
@@ -64,7 +113,8 @@ function qThree(){
   }
 
   qThree();
-
+*/
+/*
 function qFour(){
   var answer4 = prompt(userName + ', on a scale of 1 to 10, how good of friends are we?');
     if (answer4 >= 7){
@@ -76,8 +126,9 @@ function qFour(){
       console.log('Your friend responded, ' + answer4 + ' to question 4.');
     }
 }
-
 qFour();
+*/
+
 
 function qFive(){
 var incorrectAnswer5 = false;
@@ -95,7 +146,7 @@ var attempts = 0;
           } else {
           attempts ++;
             //alert('Wow! You really know your stuff. It took you ' + attempts + ' attempts to guess my number, and you got ' + answersRight + ' questions correct, and ' + answersWrong + ' questions wrong. Thanks for playing!');
-            res6.textContent = 'Wow! You really know your stuff. It took you ' + attempts + ' attempts to guess my number, and you got ' + answersRight + ' questions correct, and ' + answersWrong + ' questions wrong. Thanks for playing!';
+            res6.textContent = 'Wow! You really know your stuff. Thanks for playing!';
             incorrectAnswer5 = true;
             }
           }
